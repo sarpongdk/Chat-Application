@@ -7,20 +7,33 @@ import javax.swing.*;
 
 public class ChatGUI extends JFrame
 {
-   private static final int WINDOW_WIDTH = 405;
-   private static final int WINDOW_HEIGHT = 500;
+   private static final int WINDOW_WIDTH = 505;
+   private static final int WINDOW_HEIGHT = 320;
    private static final int TEXTFIELD_LENGTH = 25;
+   private static final int TEXTAREA_WIDTH = 15;
+   private static final int TEXTAREA_HEIGHT = 40;
 
    private JPanel panel;
    private JTextField textField;
    private JButton send;
-   
+   private JTextArea textArea;
+   private JScrollPane scrollPane;
+
    public ChatGUI()
    {
       panel = new JPanel();
       textField = new JTextField(TEXTFIELD_LENGTH);
       send = new JButton("Send");
+      textArea = new JTextArea(TEXTAREA_WIDTH, TEXTAREA_HEIGHT);
+      textArea.setLineWrap(true);
+      textArea.setWrapStyleWord(true);
+      textArea.setEditable(false);
+      scrollPane = new JScrollPane(textArea);
 
+      scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+      scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+      panel.add(scrollPane);
       panel.add(textField);
       panel.add(send);
 
